@@ -9,7 +9,7 @@ async function connect(){
                 conn.createChannel((errChanel: any, channel: amqp.Channel) => {
                     if (errChanel) throw new Error(errChanel);
                     channel.assertQueue();
-                    channel.consume("initial", async (data: amqp.Message | null) => {
+                    channel.consume("cola", async (data: amqp.Message | null) => {
                       console.log(`cola : initial con datos: `);
                       if (data?.content !== undefined) {
                         const content = data?.content;
